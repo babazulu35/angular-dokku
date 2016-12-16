@@ -1,0 +1,21 @@
+{
+  "name": "nirv",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "postinstall": "ng build --aot -prod",
+    "start": "node server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "engines": {
+    "node": "6.9.2",
+    "npm": "3.10.9"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "angular-cli": "*",
+    "express": "^4.14.0"
+  }
+}
