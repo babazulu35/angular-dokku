@@ -1,0 +1,85 @@
+// Butonlarımız buradan Oluşacak
+
+$buttons: (
+
+	btn-primary:(
+		color: #ffffff,
+		background:#21242b,
+		border-color:#21242b,
+		padding-y:0px,
+		height:36px
+	),
+	btn-secondary:(
+		color: #21242b,
+		background:#fff,
+		border-color:#dcdce5,
+		padding-y:0,
+		height:40px
+	)
+
+
+);
+$buttons: map-merge($buttons, getSettingsMap("buttons"));
+.font-smooth {
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+.btn-primary {
+	$btn-primary: map-get($buttons,btn-primary);
+	@include t--create-button(map-get($btn-primary,color), map-get($btn-primary,background),map-get($btn-primary,border-color),map-get($btn-primary,padding-y),map-get($btn-primary,height) / 2, map-get($btn-primary,font-size), map-get($btn-primary,height) / 2 );
+	height:map-get($btn-primary,height);
+	@include ffamily('bold');
+	@include t--font-size(12px);
+	@extend .font-smooth;
+	&:focus,
+	&:hover,
+	&.active,
+	&:active {
+		outline: none;
+		&:focus {
+			outline: none;
+		}
+	}
+	&:hover,
+	&:focus {
+		background: lighten(map-get($btn-primary,background),10);
+	}
+}
+
+.btn-secondary {
+	display: inline-block;
+	$btn-secondary: map-get($buttons,btn-secondary);
+	@include t--create-button(map-get($btn-secondary,color), map-get($btn-secondary,background),map-get($btn-secondary,border-color),map-get($btn-secondary,padding-y),map-get($btn-secondary,height) / 2, map-get($btn-secondary,font-size), map-get($btn-secondary,height) / 2 );
+	height:map-get($btn-secondary,height);
+	@include ffamily('bold');
+	@include t--font-size(12px);
+	line-height: map-get($btn-secondary,height);
+	border-width: 1px;
+	border-style: solid;
+	text-transform: uppercase;
+	@extend .font-smooth;
+	&:focus,
+	&:hover,
+	&.active,
+	&:active {
+		outline: none;
+		text-decoration: none;
+		&:focus {
+			outline: none;
+		}
+	}
+	&:hover,
+	&:focus {
+		background: darken(map-get($btn-secondary,background),3);
+	}
+}
+
+.btn-danger {
+  @include t--create-button(#fff, #ec4e48, #ec4e48, 12px, 15px, 12px, 100px);
+  text-transform: uppercase;
+  @include ffamily('bold');
+  font-size: 12px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}

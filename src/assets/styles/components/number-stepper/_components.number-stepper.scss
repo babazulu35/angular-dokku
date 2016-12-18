@@ -1,0 +1,124 @@
+/***
+* Number Stepper Component:
+*/
+
+/**
+* Number Stepper:
+* `.c-number-stepper - Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque repellat autem deleniti odit repellendus temporibus placeat ipsa similique, neces
+*
+*    @example
+*    <div class="c-number-stepper c-number-stepper--sm">
+*    	<span class="c-number-stepper__label">SIRA SAYISI</span>
+*    	<div class="input-group c-number-stepper__content">
+*    	  <span class="input-group-btn">
+*    	    <button class="btn icon--m" type="button">add</button>
+*    	  </span>
+*    	  <input type="text" class="form-control" placeholder="10">
+*    	  <span class="input-group-btn">
+*    	    <button class="btn icon--m" type="button">remove</button>
+*    	  </span>
+*    	</div>
+*    </div>
+
+*/
+
+
+// Set defaults
+
+$c-number-stepper: (
+	min-width: 40px,
+	padding:0 0.48em,
+	label-margin: 0 0 9px 0,
+	label-color: #939393,
+	label-font-size: 11px,
+	label-line-height: 11px,
+	black-text: #262126,
+	btn-min-height: 38px,
+	btn-font-size: 1.6rem,
+	btn-line-height: 2.1em,
+	btn-bgcolor: #f7f7f7,
+	btn-text-color: #bdbdbd,
+	btn-hover-text-color: #fff,
+	hover-color: #2b98f0,
+	form-element-border-color: #dcdce5,
+	input-align: center,
+	input-font-size: 15px,
+	input-line-height: 24px,
+);
+
+// Merge settings and defaults
+$c-number-stepper: map-merge($c-number-stepper, getSettingsMap("c-number-stepper"));
+
+// Set shortcuts
+$c-map: $c-number-stepper;
+
+
+
+.c-number-stepper {
+	box-sizing: border-box;
+	&__label {
+		display:block;
+		margin: map-get($c-map, label-margin);
+		@include ffamily("semi");
+		color: map-get($c-map, label-color);
+		font-size: map-get($c-map, label-font-size);
+		line-height: map-get($c-map, label-line-height);
+	}
+	&__content {
+		@include t--placeholder {
+			color: map-get($c-map, black-text);
+			opacity:1;
+		}
+		.btn {
+			min-height: map-get($c-map, btn-min-height);
+			padding: map-get($c-map, padding);
+			background-color: map-get($c-map, btn-bgcolor);
+			color: map-get($c-map, btn-text-color);
+			border:1px solid map-get($c-map, form-element-border-color);
+			font-size: map-get($c-map, btn-font-size);
+			line-height: map-get($c-map, btn-line-height);
+			outline: none;
+			&:hover, &:focus {
+				border-color: map-get($c-map, hover-color);
+				background-color: map-get($c-map, hover-color);
+				color: map-get($c-map, btn-hover-text-color);
+				outline: none;
+			}
+		}
+		.form-control {
+			min-width: map-get($c-map, min-width);
+			border-color: map-get($c-map, form-element-border-color);
+			@include ffamily('regular');
+			font-size: map-get($c-map, input-font-size);
+			line-height: map-get($c-map, input-line-height);
+			color: map-get($c-map, black-text);
+			text-align: map-get($c-map, input-align);
+			&:hover, &:focus {
+				border-color: map-get($c-map, hover-color);
+				color: map-get($c-map, black-text);
+			}
+
+		}
+	}
+	&.c-number-stepper--sm {
+		.c-number-stepper__content {
+			.btn {
+				min-height: 27px;
+				font-size:1.19rem;
+			}
+			.form-control {
+				padding: 0.15em;
+				line-height: 1em;
+			}
+		}
+	}
+	&.c-number-stepper--lg {
+		.c-number-stepper__content {
+			.btn {
+				min-height: 51px;
+				font-size: 2.25rem;
+			}
+			.form-control { line-height: 2.5em; }
+		}
+	}
+}

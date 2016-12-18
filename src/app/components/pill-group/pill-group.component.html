@@ -1,0 +1,3 @@
+<span *ngFor="let pill of pills" class="tag tag-pill c-pill c-pill--active"  [class.c-pill--active]="pill.isActive" (click)="pill.isActive=!pill.isActive; toggle(pill)">
+	{{ pill.text }} <span class="tag tag-pill c-pill__bagde" *ngIf="pill.count">{{pill.count}}</span>
+</span>

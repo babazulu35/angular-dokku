@@ -1,0 +1,73 @@
+/***
+ * Selectbox Component:
+ */
+
+/**
+ * Selectbox:
+ * `.c-selectbox - Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque repellat autem deleniti odit repellendus temporibus placeat ipsa similique, neces
+ *
+ *     @example
+ *     <div class="c-selectbox">
+ *	     <div class="c-selectbox__field>
+ *		   <select>
+	 	  	<option>ADA GÖRE</option>
+	 	  	<option>SIRAYA GÖRE</option>
+	 	   </select>
+ 		 </div>
+ *	   </div>
+ */
+
+ // Set defaults
+ $c-selectbox: (
+   height: 32px,
+   min-width: 70px,
+   background-color: #fff,
+   text-color: $color-ui-selectbox-text,
+   border:1px solid $color-ui-border,
+ );
+
+ // Merge settings and defaults
+ $c-selectbox: map-merge($c-selectbox, getSettingsMap("c-selectbox"));
+
+ // Set shortcuts
+ $c-map: $c-selectbox;
+
+
+.c-selectbox {
+	min-width: map-get($c-map, min-width);
+	height: map-get($c-map, height);
+	border: map-get($c-map, border);
+	background-color:map-get($c-map, background-color);
+	box-sizing: border-box;
+	@include t--border-radius(map-get($c-map, height) / 2);
+	cursor:pointer;
+	.c-selectbox__field {
+		position:relative;
+		height:100%;
+		select {
+			position:relative;
+			z-index:2;
+			outline:none;
+			@include t--appearance(none);
+			width:100%;
+			height:100%;
+			padding:0 26px 0 (map-get($c-map, height) / 2);
+			background:none;
+			border:none;
+			cursor:pointer;
+			font-size:11px;
+			@include ffamily(semi);
+			color:map-get($c-map, text-color);
+		}
+		&:after{
+			position:absolute;
+			top:50%;
+			right:9px;
+			@include t--translateY(-50%);
+			@include icon("expand_more",$size:21px);
+			color:map-get($c-map, text-color);
+		}
+	}
+}
+ $c-selectbox: null;
+ $c-map:null;

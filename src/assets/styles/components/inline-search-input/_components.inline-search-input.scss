@@ -1,0 +1,87 @@
+/**
+ * inline-search-input Component:
+ * Author: Coşkun BALTACI
+**/
+
+
+/**
+* Bootstrap input kullanıldı.
+* https://v4-alpha.getbootstrap.com/components/input-group/
+*
+* @attributes
+* icon-color:#C2C2C2,
+* text-color:#C2C2C2,
+* border-color: #2096F3,
+*
+* <div class="c-inline-search-input">
+* 	<div class="input-group">
+* 		<i class="main-menu__list-item-icon icon--m">search</i>
+* 		<input type="text" class="form-control" placeholder="Etkinlikler Arasında Arayın" aria-describedby="basic-addon1">
+* 	</div>
+* </div>
+*
+* İkonu sağa almak için ikon ile input'un yerinin değiştirilmesi yeterlidir.
+*
+* <div class="c-inline-search-input">
+* 	<div class="input-group">
+* 		<i class="main-menu__list-item-icon icon--m">search</i>
+* 		<input type="text" class="form-control" placeholder="Etkinlikler Arasında Arayın" aria-describedby="basic-addon1">
+* 	</div>
+* </div>
+**/
+
+// Set defaults
+$c-inline-search-input: (
+	icon-color:#C2C2C2,
+	text-color:#C2C2C2,
+	active-text-color: #21242b,
+	border-color: #2096F3,
+);
+
+// Merge settings and defaults
+$c-inline-search-input: map-merge($c-inline-search-input, getSettingsMap("c-inline-search-input"));
+$c-map: $c-inline-search-input;
+
+// Component
+.c-inline-search-input {
+	.form-control {
+		vertical-align: bottom;
+		border: none;
+		color: map-get($c-map, "text-color");
+		@include t--font-size(15px, 1em);
+		margin-left: 6px;
+		padding-left: 0px;
+		@include ffamily('regular');
+		background-color: transparent;
+		&:focus {
+			color: map-get($c-map, "active-text-color");
+			border-bottom: 1px solid map-get($c-map, "border-color");
+			margin-bottom: -1px;
+			-webkit-border-radius: 0px;
+			-moz-border-radius: 0px;
+			border-radius: 0px;
+		}
+	}
+	// .c-promise-icon {
+	// 	display: table-cell;
+	// }
+}
+.c-inline-search-input--border {
+	border-bottom: 1px solid map-get($c-map, "border-color");
+	.form-control {
+		padding-left: 0px;
+		margin-left: 0px;
+		&:focus{
+			border-bottom: none;
+			margin-bottom: 0px;
+		}
+	}
+}
+
+.c-inline-search-input__icon {
+	width: 1em;
+	display: table-cell;
+	vertical-align: bottom;
+	color: map-get($c-map, "icon-color");
+	@include t--font-size(27px,0);
+}

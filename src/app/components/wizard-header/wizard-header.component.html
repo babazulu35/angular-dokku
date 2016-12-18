@@ -1,0 +1,13 @@
+<div class="c-wizard-header__left">
+  <a href="#" (click)="history()" class="c-wizard-header__back-button icon__n icon__n--navigate_before"></a>
+</div>
+<div class="c-wizard-header__center">
+  <span class="c-wizard-header__title">
+    <ng-content></ng-content>
+  </span>
+</div>
+<div class="c-wizard-header__right">
+  <span class="c-wizard-header__level-pill tag-pill tag-default">
+    <strong>{{currentLevel}}</strong> / {{totalLevel}}
+  </span>
+</div>

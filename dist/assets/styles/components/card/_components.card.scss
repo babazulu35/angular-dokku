@@ -1,0 +1,222 @@
+/**
+ * Card:
+ * Kart `.c-card` sınıfı ile oluşturulur.
+ *
+ * 1) Kart seçilebilir olacaksa `c-card-selectable` class'ı verilmeli.
+ * 2) Kart seçili olunca ise `c-card-selectable-on` class'ı verilmeli.
+ *
+ * Kart içi iconlar için;
+ * 1) iconlar varsayılan gri görünür. Aktif göstermek için `c-card__top-icons-on` class'ını kullanmalısınız.
+ *
+ *     @example
+ *     <div class="c-card">
+ *
+ *       <i class="c-card__top-icons icon--m">visibility_off</i>
+ *       <i class="c-card__top-icons c-card__top-icons-right icon--m">more_vert</i>
+ *
+ *       <figure class="c-card__figure">
+ *         <img src="http://placehold.it/160x160" alt="" class="u-image--round">
+ *         <span class="c-card__kind-icon">
+ *           <i class="icon--m">audiotrack</i>
+ *           <i class="icon--m">movie</i>
+ *         </span>
+ *       </figure>
+ *
+ *       <strong class="c-card__name">12. Uluslararası D-Marin Klasik Müzik Festivali</strong>
+ *
+ *       <ul class="c-card__metas">
+ *         <li><strong>16 - 18</strong> Mayıs 2015</li>
+ *         <li>Uçhisar, Kapadokya</li>
+ *       </ul>
+ *     </div>
+ */
+
+// Set defaults
+$c-card: (
+  min-width: 200px,
+  height: 350px,
+  card-photo-size:160px,
+  border-radius: 3px,
+  kind-icon-height: 38px,
+  c-padding: 15px,
+  name-min-height: 90px,
+  name-font-size: 16px,
+  top-icon-size: 24px,
+  kind-icon-size: 23px,
+  kind-min-width: 38px,
+  meta-margin-bottom-left: 20px,
+  meta-width: 100%,
+  meta-font-size: 13px,
+
+  c-primary-color: #3a2e39,
+  meta-color: #2e2e2f,
+  black: #333,
+  icon-color: #bdbdbd,
+  icon-color-on: #7cb342,
+  card-border-color: #dcdce5,
+  card-hover-border-color: #21242b,
+  c-selectable-box-shadow: 0 5px 10px 0 rgba(0,0,0,.1),
+  c-selectable-bg-content: rgba(58,46,57,.9),
+);
+
+// Merge settings and defaults
+$c-card: map-merge($c-card, getSettingsMap("c-card"));
+
+// Set shortcuts
+$c-map: $c-card;
+
+// Component
+.c-card {
+  position: relative;
+  z-index: 0;
+  display: inline-block;
+  text-align: left;
+  vertical-align: middle;
+
+  min-width: map-get($c-map, min-width);
+  padding: map-get($c-map, c-padding);
+  color: map-get($c-map, black);
+  background-color: $color-text-white;
+  border: 1px solid map-get($c-map, card-border-color);
+
+  @include t--size(100%, map-get($c-map, height));
+  @include ffamily;
+  @include border-radius(map-get($c-map, border-radius));
+}
+
+.c-card--selectable {
+  border-color: map-get($c-map, c-primary-color);
+  box-shadow: map-get($c-map, c-selectable-box-shadow);
+
+  &:hover {
+    .c-card-selectable-content {
+      display: block;
+    }
+    .o-placeholder--card {
+      display: block;
+    }
+  }
+}
+
+.c-card--selectable--selected {
+  .c-card-selectable-content {
+    display: block;
+  }
+}
+
+.c-card--selectable:hover, .c-card--selectable--selected {
+  .c-card__top-icons--right {
+    z-index: 2;
+    color: $color-text-white;
+  }
+}
+
+.c-card-selectable-content {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+
+  @include t--size(100%);
+
+  background-color: map-get($c-map, c-selectable-bg-content);
+}
+
+.c-card__figure {
+  position: relative;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 20px;
+
+  width: map-get($c-map, card-photo-size);
+
+  .c-avatar {
+    font-size: map-get($c-map, card-photo-size) !important;
+  }
+}
+
+.c-card__name {
+  display: block;
+
+  font-size: map-get($c-map, name-font-size);
+  height: map-get($c-map, name-min-height);
+  color: map-get($c-map, c-primary-color);
+
+  @include ffamily('semi');
+}
+
+.c-card__top-icons {
+  position: absolute;
+  top: 12px;
+  left: 14px;
+
+  color: map-get($c-map, icon-color);
+  font-size: map-get($c-map, top-icon-size);
+
+  &.c-card__top-icons--right {
+    left: auto;
+    right: 8px;
+  }
+
+  &.c-card__top-icons--on {
+    color: map-get($c-map, icon-color-on);
+  }
+
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.c-card__kind-icon {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  z-index: 0;
+  padding-left: 7px;
+  padding-right: 7px;
+  text-align: center;
+  box-shadow: 0 0 0 5px $color-text-white;
+  background-color: $color-text-white;
+
+  min-width: map-get($c-map, kind-min-width);
+  color: map-get($c-map, icon-color);
+  border:1px solid map-get($c-map, card-border-color);
+  border-radius: map-get($c-map, kind-icon-height);
+  height: map-get($c-map, kind-icon-height);
+
+  i {
+    display: inline-block;
+    margin-top: 7px;
+
+    font-size: map-get($c-map, kind-icon-size);
+  }
+}
+
+.c-card__metas {
+  position: absolute;
+  z-index:1;
+
+  left: map-get($c-map, meta-margin-bottom-left);
+  bottom: map-get($c-map, meta-margin-bottom-left);
+  width: calc(#{map-get($c-map, meta-width)} - (#{map-get($c-map, meta-margin-bottom-left)} * 2));
+
+  li {
+    display: block;
+    margin-top: 2px;
+
+    font-size: map-get($c-map, meta-font-size);
+    color: map-get($c-map, meta-color);
+
+    & > ul {
+      margin-left: 0;
+    }
+  }
+
+  strong {
+    @include ffamily('bold');
+  }
+}
+
+//Reset
+$c-map: null;

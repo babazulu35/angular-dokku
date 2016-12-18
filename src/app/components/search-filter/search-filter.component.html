@@ -1,0 +1,48 @@
+
+<div class="row o-search-filter">
+	<!-- Inline Search Starts -->
+	<div class="col-lg-7 col-xl-5">
+		<app-inline-search-input>
+			<div class="c-inline-search-input">
+				<div class="input-group">
+					<div class="c-inline-search-input__icon">
+						<div class="c-promise-icon c-promise-icon--autosize">
+							<div class="c-promise-icon__before">
+								<i class="icon__n icon__n--search"></i>
+							</div>
+							<div class="c-promise-icon__spinner c-promise-icon__spinner">
+								<div class="c-promise-icon__spinner-blade"></div>
+								<div class="c-promise-icon__spinner-blade"></div>
+								<div class="c-promise-icon__spinner-blade"></div>
+								<div class="c-promise-icon__spinner-blade"></div>
+								<div class="c-promise-icon__spinner-blade"></div>
+								<div class="c-promise-icon__spinner-blade"></div>
+								<div class="c-promise-icon__spinner-blade"></div>
+								<div class="c-promise-icon__spinner-blade"></div>
+								<div class="c-promise-icon__spinner-blade"></div>
+								<div class="c-promise-icon__spinner-blade"></div>
+								<div class="c-promise-icon__spinner-blade"></div>
+								<div class="c-promise-icon__spinner-blade"></div>
+							</div>
+						</div>
+					</div>
+					<input type="text" class="form-control" placeholder="Etkinlikler Arasında Arayın" aria-describedby="basic-addon1">
+				</div>
+			</div>	
+		</app-inline-search-input>
+		<!-- Inline Search Ends -->
+	</div>
+	<div class="col-lg-9 col-xl-7 text-xs-center text-sm-right text-md-right text-lg-right text-xl-center">
+		<!-- Pill Starts Here -->
+		<app-pill-group [pills]="pills"></app-pill-group>
+		<!-- Pill ends -->
+	</div>
+	<div class="col-xl-1 col-lg-16 text-lg-center text-xl-right float-xl-right">
+		<app-sort-view></app-sort-view>
+	</div>
+	<!-- Select Box Starts Here-->
+	<div class="col-lg-16 col-xl-2 float-xl-right">
+		<app-selectbox [options]=""></app-selectbox>
+	</div>
+	<!-- Selet Box Ends-->
+</div>

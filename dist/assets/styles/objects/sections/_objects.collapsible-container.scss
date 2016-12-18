@@ -1,0 +1,83 @@
+// Set defaults
+$o-collapsible-container: (
+  aside-content-padding-y: 30px,
+  aside-content-padding-x: 20px,
+  aside-border-color: #dcdce5,
+  aside-bg: #f7f7f7,
+  aside-collapsed-width: 20px,
+  aside-expanded-width: 240px,
+  toggle-btn-height: 50px,
+  toggle-btn-width: 40px,
+  toggle-btn-color: #bdbdbd,
+  toggle-btn-hover-color: #333,
+);
+
+// Merge settings and defaults
+$o-collapsible-container: map-merge($o-collapsible-container, getSettingsMap("o-collapsible-container"));
+$c-map: $o-collapsible-container;
+
+
+.o-collapsible-container {
+  display: table;
+  width: 100%;
+  &__content {
+    display: table-cell;
+    box-shadow: 0px 0.25em 10px rgba(0,0,0,0.4);
+  }
+  &__aside {
+    position: relative;
+    display: table-cell;
+    width: map-get($c-map, aside-collapsed-width);
+    height: calc(100vh - 412px);
+    background-color: map-get($c-map, aside-bg);
+    border-left: 1px solid map-get($c-map, aside-border-color);
+    
+    @include transition(width getTransition(main-menu));
+    .o-collapsible-container__aside-inner {
+      display: none;
+    }
+    &--expanded {
+      padding: map-get($c-map, aside-content-padding-y) map-get($c-map, aside-content-padding-x);
+      width: map-get($c-map, aside-expanded-width);
+      @include transition(width getTransition(main-menu));
+      .o-collapsible-container__aside-inner {
+        display: block;
+      }
+      .o-collapsible-container__toggle-btn {
+        .icon-open { display: none; }
+        .icon-close { display: block; }
+      }
+    }
+  }
+  &__toggle-btn {
+    border: 1px solid map-get($c-map, aside-border-color);
+    color: map-get($c-map, toggle-btn-color);
+    height: map-get($c-map, toggle-btn-height);
+    width: map-get($c-map, toggle-btn-width);
+    border-radius: map-get($c-map, toggle-btn-height);
+    background-color: map-get($c-map, aside-bg);
+
+    display: inline-block;
+    position: absolute;
+    top: 20px;
+    left: -#{map-get($c-map, toggle-btn-width)};
+    font-size: 21px;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    text-align: center;
+
+    i {
+      display: inline-block;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      @include t--translate(#{calc(-50% + 3px)}, -50%);
+    }
+
+    &:hover {
+      color: map-get($c-map, toggle-btn-hover-color);
+    }
+
+    .icon-close { display: none; }
+  }
+}

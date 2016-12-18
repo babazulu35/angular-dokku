@@ -1,0 +1,138 @@
+<div class="container" (window:resize)="onResize($event)">
+
+    <div class="o-card-container " #container>
+        <div class="o-placeholder--multi_selection">
+            <app-multi-selection-bar></app-multi-selection-bar>
+        </div>
+        <app-card-item #parent>
+            <div class="o-card-view__item" #card>
+                <div class="c-card ">
+                    <i class="c-card__top-icons c-card__top-icons--right icon__n icon__n--more_vert" (click)="parent.openCardMenu($event)"></i>
+                    <div class="c-card__figure">
+                        <span class="c-avatar c-avatar--autosize c-avatar--circle">
+                            <figure>
+                                 <img src="http://loremflickr.com/160/160?random=3" alt="">
+                             </figure>
+                        </span>
+                    </div>
+                    <a href="#"><strong class="c-card__name">Volkswagen Arena</strong></a>
+
+                    <ul class="c-card__metas">
+                        <li>Sarıyer İstanbul/Turkiye</li>
+                        <li><strong>T.</strong>0212 555 4444</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="o-card-view__item" #card>
+                <div class="c-card ">
+                    <i class="c-card__top-icons c-card__top-icons--right icon__n icon__n--more_vert" (click)="parent.openCardMenu($event)"></i>
+                    <div class="c-card__figure">
+                        <span class="c-avatar c-avatar--autosize c-avatar--circle">
+                            <figure>
+                                 <img src="http://loremflickr.com/160/160?random=2" alt="">
+                             </figure>
+                        </span>
+                    </div>
+                    <a href="#"><strong class="c-card__name">Babylon Kilyos</strong></a>
+
+                    <ul class="c-card__metas">
+                        <li>Sarıyer İstanbul/Turkiye</li>
+                        <li><strong>T.</strong>0212 555 4444</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="o-card-view__item" #card>
+                <div class="c-card ">
+                    <i class="c-card__top-icons c-card__top-icons--right icon__n icon__n--more_vert" (click)="parent.openCardMenu($event)"></i>
+                    <div class="c-card__figure">
+                        <span class="c-avatar c-avatar--autosize c-avatar--circle">
+                            <figure>
+                                 <img src="http://loremflickr.com/160/160?random=1" alt="">
+                             </figure>
+                        </span>
+                    </div>
+                    <a href="#"><strong class="c-card__name">Babylon Çeşme</strong></a>
+
+                    <ul class="c-card__metas">
+                        <li>Sarıyer İstanbul/Turkiye</li>
+                        <li><strong>T.</strong> 0232 555 4444</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="o-card-view__item" #card>
+                <div class="c-card ">
+                    <i class="c-card__top-icons c-card__top-icons--right icon__n icon__n--more_vert" (click)="parent.openCardMenu($event)"></i>
+                    <div class="c-card__figure">
+                        <span class="c-avatar c-avatar--autosize c-avatar--circle">
+                            <figure>
+                                 <img src="http://loremflickr.com/160/160?random=4" alt="">
+                             </figure>
+                        </span>
+                    </div>
+                    <a href="#"><strong class="c-card__name">Babylon Çeşme</strong></a>
+
+                    <ul class="c-card__metas">
+                        <li>Sarıyer İstanbul/Turkiye</li>
+                        <li><strong>T.</strong> 0232 555 4444</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="o-card-view__item" #card>
+                <div class="c-card ">
+                    <i class="c-card__top-icons c-card__top-icons--right icon__n icon__n--more_vert" (click)="parent.openCardMenu($event)"></i>
+                    <div class="c-card__figure">
+                        <span class="c-avatar c-avatar--autosize c-avatar--circle">
+                            <figure>
+                                 <img src="http://loremflickr.com/160/160?random=5" alt="">
+                             </figure>
+                        </span>
+                    </div>
+                    <a href="#"><strong class="c-card__name">Babylon Ankara</strong></a>
+
+                    <ul class="c-card__metas">
+                        <li>Sarıyer İstanbul/Turkiye</li>
+                        <li><strong>T.</strong> 0232 555 4444</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="o-card-view__item" #card>
+                <div class="c-card ">
+                    <i class="c-card__top-icons c-card__top-icons--right icon__n icon__n--more_vert" (click)="parent.openCardMenu($event)"></i>
+                    <div class="c-card__figure">
+                        <span class="c-avatar c-avatar--autosize c-avatar--circle">
+                            <figure>
+                                 <img src="http://loremflickr.com/160/160?random=6" alt="">
+                             </figure>
+                        </span>
+                    </div>
+                    <a href="#"><strong class="c-card__name">Bomonti Ada</strong></a>
+
+                    <ul class="c-card__metas">
+                        <li>Sarıyer İstanbul/Turkiye</li>
+                        <li><strong>T.</strong> 0232 555 4444</li>
+                    </ul>
+                </div>
+            </div>
+        </app-card-item>
+
+        <div class="o-card-view__footer">
+            <div class="row">
+                <div class="col-lg-1">
+                    <div class="o-pageselect">
+                        <div class="c-selectbox">
+                            <div class="c-selectbox__field">
+                                <select>
+                              <option>10</option>
+                              <option>11</option>
+                          </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-15 text-lg-center">
+                    <app-pagination></app-pagination>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

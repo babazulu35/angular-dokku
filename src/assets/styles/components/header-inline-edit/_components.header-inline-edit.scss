@@ -1,0 +1,136 @@
+/**
+* Inline Edit:
+* `.c-header-inline-edit` sınıfı ile kullanılır. Bileşende düzenleme moduna geçildiğinde `.is-editable` sınıfı, işlem yapıldığında spinner göstermek için ise `.is-processing` kullanılır.
+*
+* @example
+* <span class="c-header-inline-edit is-editable">
+*   <span class="c-header-inline-edit__breadcrumb-text">Volkswagen Arena /</span>
+*   <span class="c-header-inline-edit__inline-text">Yeni Oturma Düzeni</span>
+*   <span class="c-header-inline-edit__input"><input type="text" placeholder="Yeni Oturma Düzeni"></span>
+*   <a href="#" class="c-header-inline-edit__edit-button"><i class="icon__n icon__n--edit"></i></a>
+*   <a href="#" class="c-header-inline-edit__return"><i class="icon__n icon__n--keyboard_return"></i></a>
+* </span>
+*/
+
+
+// Variables
+$c-header-inline-edit: (
+  breadcrumb-text: #35383d,
+  inline-text: #9d9d9d,
+  input-placeholder: #9d9d9d,
+  input-placeholder-focused: #35383d,
+  input-border: #21242b,
+  input-border-focused: #3a99ed,
+  edit-icon: #35383d,
+  edit-icon-hover: lighten(#35383d, 25%),
+  error-color: #e10f21,
+);
+
+// Merge settings and defaults
+$c-header-inline-edit: map-merge($c-header-inline-edit, getSettingsMap("c-header-inline-edit"));
+
+// Set shortcuts
+$c-map: $c-header-inline-edit;
+
+
+@mixin placeholder { // TODO: Geçici olarak yerleştirildi. Birleştirildikten sonra kaldırılacak.
+  $placeholders: ":-webkit-input" ":-moz" "-moz" "-ms-input";
+  @each $placeholder in $placeholders {
+    &:#{$placeholder}-placeholder {
+      @content;
+    }
+  }
+}
+
+.c-header-inline-edit {
+  position: relative;
+  display: table;
+  width: 100%;
+  & > * {
+    display: table-cell;
+  }
+  &--editable {
+    .c-header-inline-edit__inline-text, .c-header-inline-edit__edit-button { display: none }
+    .c-header-inline-edit__input, .c-header-inline-edit__return { display: table-cell }
+  }
+  &--processing {
+    .c-promise-icon__spinner {
+      display: block;
+      left: auto;
+      top: 0;
+    }
+    .c-header-inline-edit__return { display: none }
+  }
+  &--error {
+    input, textarea {
+      color: map-get($c-map, error-color);
+      border-bottom-color: map-get($c-map, error-color) !important;
+      @include placeholder {
+        color: map-get($c-map, error-color);
+      }
+    }
+  }
+  a {
+    color: map-get($c-map, edit-icon);
+    .icon__n { font-size: 24px }
+    &:hover {
+      color: map-get($c-map, edit-icon-hover);
+    }
+  }
+}
+
+.c-header-inline-edit__breadcrumb-text,
+.c-header-inline-edit__breadcrumb-text:after,
+.c-header-inline-edit__inline-text {
+  @include ffamily("light");
+  font-size: 22px;
+}
+
+.c-header-inline-edit__breadcrumb-text {
+  padding-right: 5px;
+  color: map-get($c-map, breadcrumb-text);
+  white-space: nowrap;
+  &:after {
+    margin-left: 5px;
+    content: "/"
+  }
+}
+
+.c-header-inline-edit__inline-text {
+  width: 100%;
+  color: map-get($c-map, inline-text);
+}
+
+.c-header-inline-edit__input {
+  display: none;
+  width: 100%;
+  input, textarea {
+    padding-right: 30px;
+    width: 100%;
+    height: 36px;
+    background-color: transparent;
+    @include ffamily("light");
+    font-size: 22px;
+    border: 0;
+    border-bottom: 1px solid map-get($c-map, input-border);
+    &:focus {
+      outline: 0;
+      border-bottom-color: map-get($c-map, input-border-focused);
+    }
+    @include placeholder {
+      color: map-get($c-map, input-placeholder);
+      opacity: 1;
+    }
+  }
+}
+
+.c-header-inline-edit__edit-button {
+  position: relative;
+  top: 2px;
+}
+
+.c-header-inline-edit__return, .c-promise-icon__spinner {
+  position: absolute;
+  right: 0;
+  display: none;
+}

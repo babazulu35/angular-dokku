@@ -1,0 +1,116 @@
+$c-typeahead: (
+  color: #000,
+
+  search-box-height: 37px, //inline search input height
+
+  group-title-color: #a6a6a6,
+  group-title-size: 11px,
+
+  list-item-icon-color: #bdbdbd,
+  list-item-icon-size: 24px,
+  list-item-padding: 13px 0px 10px 8px,
+  list-item-border-color: #dcdce5,
+
+  list-item-primary-color: #3a2e39,
+  list-item-primary-size: 13px,
+
+  list-item-secondary-color: #9d9d9d,
+  list-item-secondary-size: 12px
+
+);
+
+// Merge settings and defaults
+$c-typeahead: map-merge($c-typeahead, getSettingsMap("c-typeahead"));
+
+// Set shortcuts
+$c-map: $c-typeahead;
+
+.c-typeahead {
+  display: block;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  white-space: normal;
+
+  &__search-box {
+    padding-right: 7px;
+  }
+
+  &__result-box {
+    width: 100%;
+    height: calc(100% - #{map-get($c-map, search-box-height)} - #{map-get($c-map, group-title-size)*3});
+    overflow-y: auto;
+    margin-top: map-get($c-map, group-title-size)*3;
+    padding-right: $global-scroll-width;
+    padding-bottom: 1px; //border-width
+  }
+
+  &__result-group {
+    width: 100%;
+    margin-bottom: map-get($c-map, group-title-size)*3;
+
+    &:last-child {
+      margin-bottom: 0px;
+    }
+  }
+
+  &__result-group-title {
+    @include ffamily('semi');
+    font-size: map-get($c-map, group-title-size);
+    color: map-get($c-map, group-title-color);
+    margin-bottom: 0.5em;
+  }
+
+  &__result-list {
+    list-style-type: none;
+    width: 100%;
+    border-top: solid 1px map-get($c-map, list-item-border-color);
+  }
+
+  &__result-list-item {
+    display: table;
+    width: 100%;
+    padding: map-get($c-map, list-item-padding);
+    border-bottom: solid 1px map-get($c-map, list-item-border-color);
+
+    @include ffamily('regular');
+
+    >* {
+      vertical-align: middle;
+    }
+  }
+
+  &__result-list-item-icon {
+    display: table-cell;
+    font-size: map-get($c-map, list-item-icon-size);
+    color: map-get($c-map, list-item-icon-color);
+    vertical-align: middle;
+    line-height: 1;
+    width: map-get($c-map, list-item-icon-size)*1.5;
+  }
+
+  &__result-list-item-content {
+    display: table-cell;
+    text-align: left;
+    @include ffamily('semi');
+    font-size: map-get($c-map, list-item-primary-size);
+    color: map-get($c-map, list-item-primary-color);
+
+    &--primary {
+      display: inline-block;
+      @include ffamily('semi');
+      font-size: map-get($c-map, list-item-primary-size);
+      color: map-get($c-map, list-item-primary-color);
+    }
+
+    &--secondary {
+      display: inline-block;
+      font-size: map-get($c-map, list-item-secondary-size);
+      color: map-get($c-map, list-item-secondary-color);
+    }
+  }
+}
+
+//Reset
+$c-map: null;
+$selected-size: null;

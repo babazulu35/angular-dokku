@@ -1,0 +1,132 @@
+/* --------------------------------------------------------
+version: 1.0
+last modified: 19.11.2016
+author: Abdullah Karadeniz
+----------------------------------------------------------*/
+
+/**
+ * Avatar:
+ * `.c-avatar` -
+
+ *     @example
+ *     .c-avatar
+ */
+
+$c-avatar: (
+  sizes: (
+    sm: (
+      width: 40px,
+      height: 40px
+    ),
+    md: (
+      width: 64px,
+      height: 64px
+    ),
+    lg: (
+      width: 128px,
+      height: 128px
+    )
+  )
+);
+
+// Merge settings and defaults
+$c-avatar: map-merge($c-avatar, getSettingsMap("c-avatar"));
+
+// Set shortcuts
+$c-map: $c-avatar;
+$sizes: map-get($c-map, sizes);
+$selected-size: map-get($sizes, md);
+
+.c-avatar {
+  display: inline-block;
+  position: relative;
+
+  font-size: map-get($selected-size, width);
+  line-height: 0px;
+  width: 1em;
+  height: 1em;
+
+  //Set sizes
+
+  &--sm {
+      $selected-size: map-get($sizes, sm);
+      font-size: map-get($selected-size, width);
+  }
+
+  &--md {
+      $selected-size: map-get($sizes, md);
+      font-size: map-get($selected-size, width);
+  }
+
+  &--lg {
+      $selected-size: map-get($sizes, lg);
+      font-size: map-get($selected-size, width);
+  }
+
+  &--autosize {
+    font-size: inherit !important;
+  }
+
+  &--has-icon {
+    >figure,
+    .c-avatar__letters {
+      display: none !important;
+    }
+  }
+
+  &--has-letters {
+    >figure,
+    .c-avatar__icon {
+      display: none !important;
+    }
+  }
+
+
+  //Set shapes
+  &--circle {
+    border-radius: 50%;
+    >figure {
+      border-radius: 50%;
+    }
+  }
+
+  &__icon {
+    font-size: 0.75em;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+  }
+
+  &__letters {
+    font-size: 0.35em;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    @include ffamily('semi');
+  }
+
+  >figure {
+   display: inline-block;
+   position: relative;
+   overflow: hidden;
+   -webkit-mask-image: -webkit-radial-gradient(circle, white, black);
+   top: 0px;
+   left: 0px;
+   width: 100%;
+   height: 100%;
+
+   >img {
+     max-width: inherit;
+     max-height: 100%;
+     position: absolute;
+     top: 0;
+     left: 50%;
+     @include transform(translateX(-50%));
+   }
+ }
+}
+
+//Reset
+$c-map: null;

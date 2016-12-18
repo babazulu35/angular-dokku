@@ -1,0 +1,24 @@
+{
+    "name": "nirvana-boffice",
+    "description": "Nirvana Html Gulp",
+    "main": "gulpfile.js",
+    "authors": [
+        "Brewww Interactive"
+    ],
+    "license": "ISC",
+    "homepage": "",
+    "ignore": [
+        "**/.*",
+        "node_modules",
+        "bower_components",
+        "test",
+        "tests"
+    ],
+    "dependencies": {
+        "html5shiv": "^3.7.3",
+        "bootstrap": "v4.0.0-alpha.5",
+
+        "nouislider": "*",
+        "pikaday": "^1.5.1"
+    }
+}

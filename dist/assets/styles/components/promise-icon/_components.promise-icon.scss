@@ -1,0 +1,192 @@
+/* --------------------------------------------------------
+version: 1.0
+last modified: 19.11.2016
+author: Abdullah Karadeniz
+----------------------------------------------------------*/
+
+/**
+ * Promise Icon:
+ * `.c-promise-icon` -
+
+ *     @example
+ *     .c-promise-icon
+ */
+
+$c-promise-icon: (
+  color: #000,
+  blade-count: 12,
+  ease: getEase(out-back),
+  sizes: (
+    sm: (
+      icon-size: 18px
+    ),
+    md: (
+      icon-size: 24px
+    ),
+    lg: (
+      icon-size: 32px
+    )
+  )
+);
+
+// Merge settings and defaults
+$c-promise-icon: map-merge($c-promise-icon, getSettingsMap("c-promise-icon"));
+
+// Set shortcuts
+$c-map: $c-promise-icon;
+$selected-size: map-deep-get($c-map, sizes, md);
+
+.c-promise-icon {
+  display: inline-block;
+  position: relative;
+  font-size: map-get($selected-size, icon-size);
+  width: 1em;
+  height: 1em;
+
+  &--promise {
+    .c-promise-icon {
+      &__before,
+      &__after,
+      &__container {
+        display: none !important;
+      }
+
+      &__spinner {
+        display: inline-block !important;
+        @include animation(getAnimation(zoom-in, 0.35s map-get($c-map, ease)));
+      }
+    }
+  }
+
+  &--after {
+    .c-promise-icon {
+      &__before,
+      &__promise, {
+        display: none !important;
+      }
+
+      &__after {
+        display: inline-block !important;
+        @include animation(getAnimation(zoom-in, 0.35s map-get($c-map, ease)));
+      }
+    }
+  }
+
+  i.icon__n,
+  i.icon__m {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 1em;
+    height: 1em;
+    &:before {
+      position: absolute;
+      top: 0px;
+      left: 0px;
+
+      font-size: 1em !important;
+      line-height: 1;
+    }
+  }
+
+  &__container {
+    position: absolute;
+    display: inline-block;
+    width: 1em;
+    height: 1em;
+    top: 0px;
+    left: 0px;
+    font-size: inherit;
+    @include animation(getAnimation(zoom-in, 0.35s map-get($c-map, ease)));
+  }
+
+  &__before {
+    position: absolute;
+    display: inline-block;
+    width: 1em;
+    height: 1em;
+    top: 0px;
+    left: 0px;
+    font-size: inherit;
+    @include animation(getAnimation(zoom-in, 0.35s map-get($c-map, ease)));
+  }
+
+  &__spinner {
+    position: absolute;
+    display: none;
+    width: 1em;
+    height: 1em;
+    top: 0px;
+    left: 0px;
+    font-size: inherit;
+    @include animation(getAnimation(zoom-in, 0.35s map-get($c-map, ease)));
+  }
+
+  &__spinner-blade {
+    font-size: inherit;
+    position: absolute;
+    left: 50%;
+    top: 0px;
+    width: #{(1/map-get($c-map, blade-count))}em; //map-get($selected-size, icon-size)/map-get($c-map, blade-count); //#{(strip-unit(map-get($selected-size, icon-size))/360)}%;
+    height: 0.215em; //#{(1/3.6)}em; //.2777em
+    border-radius: #{(1/map-get($c-map, blade-count) * 0.5)}em;//map-get($selected-size, icon-size)/map-get($c-map, blade-count)/2;
+    background-color: map-get($c-map, color);
+    transform-origin: center 0.430em; //center -.2222em;
+    @include animation(getAnimation(fade-in, 1s infinite linear));
+
+    $animation-delay: 0s;
+    $blade-rotation: 0deg;
+
+    @for $i from 1 through map-get($c-map, blade-count) {
+        &:nth-child(#{$i}) {
+          animation-delay: $animation-delay;
+          @include transform(translateX(-50%) rotate($blade-rotation));
+          $blade-rotation: $blade-rotation + 30;
+          $animation-delay: $animation-delay + .083;
+        }
+    }
+  }
+
+  &__after {
+    display: none;
+    position: absolute;
+    width: 1em;
+    height: 1em;
+    top: 0px;
+    left: 0px;
+    font-size: inherit;
+  }
+
+  //Set size
+  &--sm {
+      $selected-size: map-deep-get($c-map, sizes, sm);
+      font-size: map-get($selected-size, icon-size) !important;
+      width: 1em;
+      height: 1em;
+  }
+
+  &--md {
+      $selected-size: map-deep-get($c-map, sizes, md);
+      font-size: map-get($selected-size, icon-size);
+      width: 1em;
+      height: 1em;
+  }
+
+  &--lg {
+      $selected-size: map-deep-get($c-map, sizes, lg);
+      font-size: map-get($selected-size, icon-size);
+      width: 1em;
+      height: 1em;
+  }
+
+  &--autosize {
+    font-size: inherit;
+    width: 1em;
+    height: 1em;
+  }
+
+}
+
+//Reset
+$c-map: null;
+$selected-size: null;
