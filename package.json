@@ -8,7 +8,8 @@
         "postinstall": "ng build --aot -prod"
     },
     "dependencies": {
-        "express": "^4.14.0"
+        "express": "^4.14.0",
+        "angular-cli": "1.0.0-beta.19-3"
     },
     "devDependencies": {
         "@angular/common": "2.0.0-rc.5",
@@ -24,7 +25,6 @@
         "ts-helpers": "^1.1.1",
         "zone.js": "0.6.12",
         "@types/jasmine": "^2.2.30",
-        "angular-cli": "1.0.0-beta.19-3",
         "codelyzer": "~0.0.26",
         "jasmine-core": "2.4.1",
         "jasmine-spec-reporter": "2.5.0",
