@@ -96,7 +96,7 @@ $row: map-get($c-map, row);
     @include ffamily(map-get($caption, font-family));
     font-size: map-get($caption, font-size);
     color: map-get($caption, color);
-    text-align: center;
+    //text-align: center;
   }
 
   &__row {
@@ -140,7 +140,7 @@ $row: map-get($c-map, row);
   }
 
   &__secondary-column {
-    text-align: center;
+    //text-align: center;
   }
 
   &__secondary-item {
@@ -171,25 +171,6 @@ $row: map-get($c-map, row);
     font-size: map-get($action-btn, width);
     @include transform(translateY(-50%));
 
-  }
-}
-
-//Overrides
-.app-performers-list-view {
-  .container {
-    .o-list-view {
-      .o-list-view__content {
-        .c-responsive-table {
-          .c-responsive-table__row {
-            .c-responsive-table__secondary-column {
-              .icon__n {
-                color: #bdbdbd !important;
-              }
-            }
-          }
-        }
-      }
-    }
   }
 }
 

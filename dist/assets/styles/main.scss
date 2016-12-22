@@ -80,12 +80,10 @@
 @import "components/primary-column-line/components.primary-column-line";
 @import "components/responsive-table/components.responsive-table";
 @import "components/sort-view/components.sort-view";
-@import "components/tab-bar/components.tab-bar";
 @import "components/data-source-list/components.data-source-list";
 @import "components/number-stepper/components.number-stepper";
 @import "components/profile-photo/components.profile-photo";
 @import "components/sort-view/components.sort-view";
-@import "components/tab-bar/components.tab-bar";
 @import "components/card/components.card";
 @import "components/inline-icon-group/components.inline-icon-group";
 @import "components/promise-icon/components.promise-icon";
@@ -116,6 +114,9 @@
 @import "components/wizard-header/components.wizard-header";
 @import "components/cta-box/components.cta-box";
 @import "components/feedback-form/components.feedback-form";
+@import "components/context-menu-selectable/components.context-menu-selectable";
+@import "components/content-component-card/components.content-component-card";
+@import "components/tree-view/_components.tree-view";
 
 @import "utilities/utilities.links";
 @import "utilities/utilities.spacing";

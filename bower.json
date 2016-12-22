@@ -17,7 +17,7 @@
     "dependencies": {
         "html5shiv": "^3.7.3",
         "bootstrap": "v4.0.0-alpha.5",
-
+        "material-design-icons": "^3.0.1",
         "nouislider": "*",
         "pikaday": "^1.5.1"
     }

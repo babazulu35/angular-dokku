@@ -44,6 +44,9 @@ $icons: (
   keyboard_arrow_up: "\e316",
   keyboard_return: "\e31b",
   history: "\e889",
+  tag: "\e54e",
+  tag-multiple: "\e0cd",
+  glass-mug: "\e1b9",
 
 
   //Social Icons
@@ -624,7 +627,7 @@ $tempIcons: (
   navigate_next: "\e409",
   navigation: "\e55d",
   near_me: "\e569",
-  network_cell: "\e1b9",
+  //network_cell: "\e1b9",
   network_check: "\e640",
   network_locked: "\e61a",
   network_wifi: "\e1ba",
@@ -678,7 +681,7 @@ $tempIcons: (
   person_pin_circle: "\e56a",
   personal_video: "\e63b",
   pets: "\e91d",
-  phone: "\e0cd",
+  phone: "\e0b0", //\e0cd", =tag-multiple
   phone_android: "\e324",
   phone_bluetooth_speaker: "\e61b",
   phone_forwarded: "\e61c",

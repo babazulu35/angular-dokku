@@ -230,6 +230,7 @@ $c-map: $c-multi-select-group;
 .c-multi-select-group__item--selected {
   z-index: 1;
   background-color: map-get($c-map, item-bg-hover);
+  border-color: map-get($c-map, item-primary-color);
 }
 
 .c-multi-select-group__item--other {
@@ -278,3 +279,58 @@ $c-map: $c-multi-select-group;
   display: inline-block;
   color: map-get($c-map, item-primary-color);
 }
+
+.c-multi-select-group--wide {
+  display: block;
+  width: 100%;
+
+  .c-multi-select-group__item {
+    width: 160px;
+  }
+}
+
+.c-multi-select-group--times {
+  .c-multi-select-group__item {
+    height: 30px;
+    
+    a {
+      padding-top: 6px;
+      padding-bottom: 0px;
+    }
+  }
+
+  .c-multi-select-group__item--name {
+    @include ffamily('semi');
+
+    i {
+      position: relative;
+      font-size: 24px;
+    }
+  }
+
+  .c-multi-select-group__item__icon {
+    // position: absolute;
+    // top: 50%;
+    // left: 50%;
+    // @include t--translate(-50%, -50%);
+  }
+
+  .c-multi-select-group__item--other {
+    a {
+      padding-top: 3px;
+    }
+  }
+
+  .c-promise-icon, .c-promise-icon__before {
+    width: 100%;
+  }
+
+  .c-promise-icon__spinner {
+    top: -2px;
+    left:50%;
+    @include t--translateX(-50%);
+  }
+}
+
+$c-map: null;
+$c-multi-select-group: null;
